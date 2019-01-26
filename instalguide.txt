@@ -1,0 +1,55 @@
+Start by ensuring Ubuntu system  is up-to-date:
+
+sudo apt-get update
+sudo apt-get upgrade
+
+Download and unzip tutorial samples:
+
+wget https://github.com/EDPE-groep1/EdgeDevice/blob/master/azure-iot-sdk-python-master.zip
+unzip master.zip
+
+Upgrade pip setuptools:
+
+sudo pip install -U pip setuptools
+
+Install the pip package as specified by tutorial:
+
+pip install azure-iothub-device-client
+
+If here is an permission error try:
+	pip install azure-iothub-device-client --user
+
+Now set up and run simulated device:
+
+cd azure-iot-samples-python-master/iot-hub/Quickstarts/simulated-device
+vi SimulatedDevice.py
+
+Do not forget to include your connection string!
+
+Run SimulatedDevice.py: 
+
+Optional if the installation gets errors:
+	sudo apt-get install libboost1.58-all
+
+	sudo apt-get install libboost-all-dev
+
+	sudo apt install libcurl3
+
+python SimulatedDevice.py 
+
+Your program of installed correctly it print the following values:
+ 
+IoT Hub device sending periodic messages, press Ctrl-C to exit
+Sending message: {"temperature": 31.36,"humidity": 60.62}
+IoT Hub responded to message with status: OK
+Sending message: {"temperature": 31.00,"humidity": 78.80}
+IoT Hub responded to message with status: OK
+Sending message: {"temperature": 27.33,"humidity": 78.68}
+IoT Hub responded to message with status: OK
+messages appear to be being received by Azure IoT Hub, despite the error...
+
+
+iothub-explorer monitor-events --login "<SERVICE_CONNECTION_STRING>"
+Yay. Finally. All working.
+
+Please consider updating tutorial, and testing against various OS. Thx.
